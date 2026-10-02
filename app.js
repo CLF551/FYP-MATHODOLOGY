@@ -558,7 +558,7 @@ app.get('/admin/users', async (req, res) => {
             };
         }
         
-        const users = await User.find(query);
+        const users = await User.find(query).select('-password');
         res.json({ success: true, users });
     } catch (error) {
         console.error('Error getting users:', error);
