@@ -7,7 +7,7 @@ const app = express();
 const port = 3000;
 
 
-const uri = 'mongodb+srv://admin:admin@cluster0.4kndk.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+const uri = 'a mongodb';
 mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
