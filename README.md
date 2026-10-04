@@ -130,9 +130,6 @@ npm install
 npm start
 ```
 
-> **Note:** the connection string in the committed source is a placeholder, not a working
-> URI, so the server will not connect until you supply your own `MONGODB_URI`.
-
 Then open **http://localhost:3000**.
 
 The server listens on port **3000** (hardcoded in `app.js`).
@@ -148,10 +145,12 @@ If you want to run the demo again you must create your own accounts:
 - Register a **teacher** through `/register`.
 - An `admin` user is created automatically on first boot if it does not exist.
 
-> The auto-created admin uses a **hardcoded default password**, and the database URI was
-> originally hardcoded in `app.js`. Both must be moved to environment variables before
-> this project is run anywhere other than a local throwaway database. See
-> [Known limitations](#known-limitations).
+> The auto-created `admin` account uses the **hardcoded default password `admin`**.
+> Change it before running this anywhere other than a local throwaway database.
+> See [Known limitations](#known-limitations).
+>
+> The database URI is read from `process.env.MONGODB_URI`, falling back to a local
+> `mongodb://127.0.0.1:27017/mathodology` if unset, so no credentials are committed.
 
 ---
 
@@ -291,7 +290,6 @@ Roughly in order of value:
    on every route, so roles are enforced on the server instead of in the browser.
 2. **Stop sending answers to the client** — strip `answer` from question payloads, grade only
    on the server, and persist practice results so they count towards reports.
-   Move secrets out of source into environment variables.
 3. **Write an automated test suite for the question generators** — verify that every category
    produces the expected number of questions with a correct, non-ambiguous answer. This is
    the cheapest way to catch the defects described above.
@@ -299,7 +297,7 @@ Roughly in order of value:
    split `teacher.js` (3017 lines) by feature.
 5. **General hardening** — a linter, a lockfile, `.gitignore`, an Express error-handling
    strategy, pinned dependency versions, and a clear failure path for unknown categories.
-   Read the database connection string, the port and the initial admin password from
+   Read the port and the initial admin password from
    environment variables instead of from source.
 
 ---
