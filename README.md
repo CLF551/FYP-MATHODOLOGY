@@ -293,8 +293,8 @@ Roughly in order of value:
 3. **Write an automated test suite for the question generators** — verify that every category
    produces the expected number of questions with a correct, non-ambiguous answer. This is
    the cheapest way to catch the defects described above.
-4. **Split `app.js`** (3906 lines) into routes, models and per-grade generator modules, and
-   split `teacher.js` (3017 lines) by feature.
+4. **Split `app.js`** (~3900 lines) into routes, models and per-grade generator modules, and
+   split `teacher.js` (~3000 lines) by feature.
 5. **General hardening** — a linter, a lockfile, `.gitignore`, an Express error-handling
    strategy, pinned dependency versions, and a clear failure path for unknown categories.
    Read the port and the initial admin password from
@@ -313,9 +313,6 @@ us during the project.
 
 ---
 
-## License
-
-This project is released under the MIT License.
 
 The Hong Kong coin and banknote images under `public/coins/` and `public/banknotes/` are
 reproductions of currency used for educational illustration; the third-party images in
